@@ -4,6 +4,7 @@ using UnityEngine; //unity ile haberleþebilmek için gerekli olan fonksiyonlarýn 
 
 public class astro_hareket : MonoBehaviour //MonoBehavior'dan türetilmiþ aslýnda sizin eklediðiniz her bir c# dosyasý arkada hazýr bir c# dosyasýndan türetülüp buraya konuluyor
 {
+    public static int coins;
     public float hiz_katsayisi;
     public Rigidbody2D rb; //Astronotumun üzerinde bir rigitbody var evet fakat ben ona oyun içersinden kod içersinden nasýl müdehale edeceðim rigit body cinsinden bir referans sayesinde 
     
@@ -70,7 +71,7 @@ public class astro_hareket : MonoBehaviour //MonoBehavior'dan türetilmiþ aslýnda
     /* private void OnCollisionEnter2D(Collision2D collision)//2D fizik fonksiyonlarý tarafýndan hesaplanýp geri döndürülen çarpýþma ayracý. Hangi cisimler çarpýþýyor ne kadar süre çarpýþýyor bunun gibi tüm fizik hesaplarýnýn sonuçlarý
      {                                                      // Bu Collesion2D sýnýfýndan üretilen collision nesnesi içersinde bize geri döndürülüyor 
          Debug.Log("Astronot carpti");
-     }
+     }//Çarpýþma baþladýðýnda ne yapýlacaðý altýna yazýlýr 
      */
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -87,6 +88,13 @@ public class astro_hareket : MonoBehaviour //MonoBehavior'dan türetilmiþ aslýnda
         if(collision.tag == "MainCamera")
         {
             Debug.Log("Oldun knaka sonunda ");
+            Destroy(this.gameObject); //This kullanarak sýnýfýn baðlý olduðu (context) içersindeki nesneyi destroy ettik yani astronotu
+        }
+        else if(collision.tag == "coins")
+        {
+            coins++;
+            Debug.Log("Coin toplandi !!! ");
+            Destroy(collision.gameObject); // Tepkimeye giren gameObject'e eriþip yok ediyoruz  
         }
         
     }
