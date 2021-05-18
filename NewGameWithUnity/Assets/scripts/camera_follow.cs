@@ -71,10 +71,19 @@ public class camera_follow : MonoBehaviour
          transform.position = targetObject.transform.position + camera_payi; //camera ile cisim arasýna pay býraktýk 
         }
 
-         
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         
-            
+            Debug.Log("Coin toplandi !!! ");
+            Destroy(collision.gameObject); // Tepkimeye giren gameObject'e eriþip yok ediyoruz 
+        
+
     }
+
+
+
+}
 
    /* private void OnTriggerExit2D(Collider2D collision)
     {
