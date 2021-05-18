@@ -8,8 +8,8 @@ public class camera_follow : MonoBehaviour
     public Vector3 camera_payi;
     public float kuvvet_katsayisi = 0.1f;
     public float Speed_karsila = astro_hareket.speed;
-    /*public float speed;*/
-    public static float hiz = 0f;
+    public float speed2;
+    public static float hiz = 500f;
 
     public float zaman;
 
@@ -63,15 +63,15 @@ public class camera_follow : MonoBehaviour
         
         
         
-        /*camera_rigit.AddForce(transform.right * kuvvet_katsayisi);*/
+        camera_rigit.AddForce(transform.right * kuvvet_katsayisi);
        
-       /* 
-         if (Speed_karsila >= speed  )
-        {
-           transform.position = targetObject.transform.position + camera_payi; //camera ile cisim arasýna pay býraktýk 
-        } 
+       
+         
+        
+         transform.position = targetObject.transform.position + camera_payi; //camera ile cisim arasýna pay býraktýk 
+        }
 
-         */
+         
         
             
     }
@@ -85,7 +85,7 @@ public class camera_follow : MonoBehaviour
        
     }  */ //Bu çalýþmadý 
 
-}
+
 
     
     

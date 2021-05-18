@@ -4,6 +4,9 @@ using UnityEngine; //unity ile haberleþebilmek için gerekli olan fonksiyonlarýn 
 
 public class astro_hareket : MonoBehaviour //MonoBehavior'dan türetilmiþ aslýnda sizin eklediðiniz her bir c# dosyasý arkada hazýr bir c# dosyasýndan türetülüp buraya konuluyor
 {
+    protected Joystick joystick;
+    protected Joybutton joybutton;
+    public bool isDead;
     public static int coins;
     public float hiz_katsayisi;
     public Rigidbody2D rb; //Astronotumun üzerinde bir rigitbody var evet fakat ben ona oyun içersinden kod içersinden nasýl müdehale edeceðim rigit body cinsinden bir referans sayesinde 
@@ -12,6 +15,8 @@ public class astro_hareket : MonoBehaviour //MonoBehavior'dan türetilmiþ aslýnda
     // Start is called before the first frame update
     void Start() //guncelleme methodlarýndan herhangi birisi çaðýrýlmadan önce start fonksiyonu çaðýrýlýr oyun baþladýðýnda sadece ve sadece bir kez çalýþacak fonksiyonlarýn yerleþtirildiði yer
     {
+        joystick = FindObjectOfType<Joystick>();
+        joybutton = FindObjectOfType<Joybutton>();
         // örneðin oyun baþlangýç müziði
     }
 
@@ -52,13 +57,13 @@ public class astro_hareket : MonoBehaviour //MonoBehavior'dan türetilmiþ aslýnda
                           //frameler arasýndaki zaman farkýnýn eþit olmasýný saðlar. Bu kod sayesinde horizontal deðiþkeni unity ekranýnda rahat bir þekilde okuyoruz. Peki bu horizontal deðiþkeni nasýl deðerlendirecez 
 
 
-        transform.position += new Vector3(yatay * hiz_katsayisi, 0, 0); // iliþkili nesnenin mevcut konumunu tutan 'transform.position' deðiþkene ulaþýyoruz. Sonra bunun deðerini deðiþtirmek için üzerine gelip veri yapýsýna bakýyoruz 
+       /* transform.position += new Vector3(yatay * hiz_katsayisi, 0, 0); */// iliþkili nesnenin mevcut konumunu tutan 'transform.position' deðiþkene ulaþýyoruz. Sonra bunun deðerini deðiþtirmek için üzerine gelip veri yapýsýna bakýyoruz 
                                                                         //Vector3 olduðunu öðrendikten sonra konumu deðiþtirmek için Debug.Log'un etki ettiði yatay deðiþkenini x'eksenine referans olarak koyuyoruz ve astronot nesnemizi a-d ve <-  -> yön tuþlarýyla hareket ettirebilir bir hale sokuyoruz.
 
         //Deðerler çok hýzlý bir þekilde deðiþtiði için ýþýnlanma olarak adlandýrýlan durumla karþýlaþýyoruz bunu düzenlemek için ise þunu yapmalýyýz. transform.position '+=' new Vector3(yatay, 0, 0);
 
-        transform.position += new Vector3(0, speed * hiz_katsayisi, 0);
-
+        transform.position += new Vector3(0, speed * hiz_katsayisi, 0); //zýplama
+        transform.position += new Vector3(joystick.Horizontal * hiz_katsayisi, 0, 0); //x ekseninde hýzlanma
 
     }
 
