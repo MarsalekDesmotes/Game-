@@ -8,6 +8,8 @@ TagManager:
   - box
   - coins
   - platform
+  - hro
+  - hero
   layers:
   - Default
   - TransparentFX

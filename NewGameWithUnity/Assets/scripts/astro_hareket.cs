@@ -6,7 +6,7 @@ public class astro_hareket : MonoBehaviour //MonoBehavior'dan türetilmiþ aslýnda
 {
     protected Joystick joystick;
     protected Joybutton joybutton;
-    public bool isDead;
+    public bool isDead = false;
     public static int coins;
     public float hiz_katsayisi;
     public Rigidbody2D rb; //Astronotumun üzerinde bir rigitbody var evet fakat ben ona oyun içersinden kod içersinden nasýl müdehale edeceðim rigit body cinsinden bir referans sayesinde 
@@ -35,11 +35,11 @@ public class astro_hareket : MonoBehaviour //MonoBehavior'dan türetilmiþ aslýnda
                                                    //Yatayda olan hareketlerimizi tanýmlamak için input managerden alan girdileri alacaðýmýz bir komut ýnput manager'de name kýsmýnda yazan Horizontal'ý kullandýk
         float dikey = Input.GetAxis("Vertical");
 
-        if (yatay > 0)
+        if (joystick.Horizontal > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
-        else if (yatay < 0)
+        else if (joystick.Horizontal < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
@@ -90,12 +90,8 @@ public class astro_hareket : MonoBehaviour //MonoBehavior'dan türetilmiþ aslýnda
     {
         
             
-        if(collision.tag == "MainCamera")
-        {
-            Debug.Log("Oldun knaka sonunda ");
-            Destroy(this.gameObject); //This kullanarak sýnýfýn baðlý olduðu (context) içersindeki nesneyi destroy ettik yani astronotu
-        }
-        else if(collision.tag == "coins")
+        
+        if(collision.tag == "coins")
         {
             coins++;
             Debug.Log("Coin toplandi !!! ");

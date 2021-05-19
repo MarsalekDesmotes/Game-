@@ -5,10 +5,11 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public astro_hareket BirdScript;
+    public float fark;   
     public GameObject Borular;
-    public float xEkseni;
-    public float time;
     public float yEkseni;
+    public float time;
+    public float xEkseni,xEkseni2;
     private void Start()
     {
         StartCoroutine(SpawnObject(time));
@@ -19,9 +20,11 @@ public class Spawner : MonoBehaviour
     public IEnumerator SpawnObject(float time)
     {
         while(!BirdScript.isDead){
-             
-            Instantiate(Borular, new Vector3(yEkseni+=10, Random.Range(-xEkseni, xEkseni), 0), Quaternion.identity);
+
+            Instantiate(Borular, new Vector3(Random.Range(xEkseni,xEkseni2), Random.Range(-yEkseni, yEkseni), 0), Quaternion.identity);
             yield return new WaitForSeconds(time);
+            xEkseni +=fark;
+            xEkseni2 +=fark;
             
         }
     }

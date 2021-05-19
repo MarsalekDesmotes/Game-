@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class camera_follow : MonoBehaviour
 {
@@ -17,19 +18,33 @@ public class camera_follow : MonoBehaviour
 
 
 
-    
 
-    
 
-    
-    
-    
 
-    
+
+
+
+
+
+
     Rigidbody2D camera_rigit; //rigitbody'e bu nesne ile ulaþýcaz
 
 
-    
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+
+
+        if (collision.gameObject.CompareTag("hero"))
+        {
+         SceneManager.LoadScene("GameOver");
+
+        }
+            
+
+    }
+
+
+
 
 
 
@@ -39,7 +54,7 @@ public class camera_follow : MonoBehaviour
     private void Start()
     {
         camera_rigit = GetComponent<Rigidbody2D>(); //yukarýda tanýmladýðýmýz nesnenin ve 'rb' referans deðerinin nereyi referans alacaðýný burada belirttik 
-       
+
     }
 
 
@@ -47,6 +62,7 @@ public class camera_follow : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         zaman += Time.deltaTime;
         if (zaman <= 7 && zaman >= 6 && sayac != 1)
         {
@@ -60,33 +76,30 @@ public class camera_follow : MonoBehaviour
     }
     void LateUpdate()//Update fonksiyonu çalýþtýktan hemen sonra çalýþýyor 
     {
-        
-        
-        
-        camera_rigit.AddForce(transform.right * kuvvet_katsayisi);
-       
-       
-         
-        
-         transform.position = targetObject.transform.position + camera_payi; //camera ile cisim arasýna pay býraktýk 
-        }
 
-         
-        
-            
+
+
+        /*camera_rigit.AddForce(transform.right * kuvvet_katsayisi);
+        transform.position = targetObject.transform.position + camera_payi; //camera ile cisim arasýna pay býraktýk */
     }
-
-   /* private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "yenile")
-        {
-            Debug.Log("oldun çýk!!!");
-        }
-       
-    }  */ //Bu çalýþmadý 
+}
 
 
 
-    
-    
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
 
