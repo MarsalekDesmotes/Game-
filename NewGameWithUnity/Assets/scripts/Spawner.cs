@@ -8,8 +8,12 @@ public class Spawner : MonoBehaviour
     public float fark;   
     public GameObject Borular;
     public float yEkseni;
+<<<<<<< HEAD
     public float time;
     public float xEkseni,xEkseni2;
+=======
+    public bool isDead;
+>>>>>>> 2e0525fd09245507c5ebe3e7cbd674b562889c90
     private void Start()
     {
         StartCoroutine(SpawnObject(time));
