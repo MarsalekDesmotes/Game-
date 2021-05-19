@@ -35,11 +35,11 @@ public class astro_hareket : MonoBehaviour //MonoBehavior'dan türetilmiþ aslýnda
                                                    //Yatayda olan hareketlerimizi tanýmlamak için input managerden alan girdileri alacaðýmýz bir komut ýnput manager'de name kýsmýnda yazan Horizontal'ý kullandýk
         float dikey = Input.GetAxis("Vertical");
 
-        if (yatay > 0)
+        if (joystick.Horizontal > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
-        else if (yatay < 0)
+        else if (joystick.Horizontal < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }

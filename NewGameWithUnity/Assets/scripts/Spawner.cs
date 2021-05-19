@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour
     public float xEkseni;
     public float time;
     public float yEkseni;
+    public bool isDead;
     private void Start()
     {
         StartCoroutine(SpawnObject(time));
